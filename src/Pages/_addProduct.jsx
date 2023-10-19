@@ -23,9 +23,19 @@ const _addProduct = () => {
       ratings
     }
 
-    console.log(addProductData);
-
-  }
+    // posting the product to database
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addProductData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
 
 
