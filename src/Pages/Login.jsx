@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 function Login() {
+
+  const {theme} = useContext(AuthContext)
 
   const handleLogin = e => {
     e.preventDefault()
@@ -16,11 +20,11 @@ function Login() {
 
   return (
     <>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex">
+      <div className="min-h-screen bg-base-200">
+        <div className=" flex-col lg:flex justify-center items-center space-y-10 mt-10">
           <h1 className="text-3xl">Login</h1>
           
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className={`card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ${theme ? "bg-gray-800 text-white" : "bg-yellow-50 text-gray-500"}`}>
               <form onSubmit={handleLogin} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -58,7 +62,7 @@ function Login() {
                   </label>
                 </div>
                 <div className="form-control mt-6">
-                  <input className="btn btn-primary" type="submit" value="Login" />
+                  <input className="btn btn-primary hover:bg-gray-900 hover:text-yellow-50" type="submit" value="Login" />
                 </div>
               </form>
             </div>

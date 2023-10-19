@@ -1,0 +1,12 @@
+
+
+.light {
+    background-color: whitesmoke;
+    color: rgb(63, 63, 63);
+    height: 100%;
+}
+
+.dark {
+    background-color: rgb(46, 46, 46);
+    color: whitesmoke;
+}

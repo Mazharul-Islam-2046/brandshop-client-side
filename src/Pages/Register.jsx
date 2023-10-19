@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Register = () => {
+
+  const { theme} = useContext(AuthContext)
 
   const handleRegistration = e => {
     e.preventDefault()
@@ -36,7 +40,7 @@ const Register = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex">
           <h1 className="text-3xl">Register</h1>
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className={`card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ${theme ? "bg-gray-800 text-white" : "bg-yellow-50 text-gray-500"}`}>
               <form onSubmit={handleRegistration} className="card-body">
                 <div className="form-control">
                   <label className="label">
