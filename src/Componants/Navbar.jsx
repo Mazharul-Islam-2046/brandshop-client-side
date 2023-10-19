@@ -1,36 +1,63 @@
-
 import { useContext } from "react";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { AuthContext } from "../Providers/AuthProvider";
-
-
+import { Link, NavLink } from "react-router-dom";
+import { AiOutlineMenuFold } from "react-icons/ai";
 
 const Navbar = () => {
-    const {handleTheme, theme} = useContext(AuthContext)
-    const handleThemeNav = () => {
-        handleTheme()
-    }
+  const { handleTheme, user, logOut, theme } = useContext(AuthContext);
+
+  const handleThemeNav = () => {
+    handleTheme();
+  };
+
+  const handleLogOut = () => {
+    logOut();
+  };
 
   return (
-    <div>
-      <div className="navbar justify-between px-12 bg-base-100">
-        {/* Logo */}
-        <div className="">
-          <a className="btn btn-ghost normal-case text-xl">MZ Logo</a>
+    <div className="flex justify-center">
+      <div className="navbar md:px-12 bg-base-100">
+       <div className="flex w-2/3 justify-around flex-row-reverse md:flex-row md:justify-normal">
+         {/* Logo */}
+         <div className="lg:w-2/3">
+          <Link to="/" className="btn btn-ghost normal-case text-xl">MZ Logo</Link>
         </div>
-
 
         {/* Middle Menu */}
-        <div>
-            <h2>Home</h2>
-        </div>
+        <div className="md:flex w-1/3">
+          <div className="hidden md:flex space-x-5">
+          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost text-gray-800"} to="/">Home</NavLink>
+          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost text-gray-800"} to="/addProducts">Add Product</NavLink>
+          </div>
 
+          {/* Hamburger Menu */}
+          <div className={`dropdown dropdown-start md:hidden`}>
+              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                <div className="w-10 flex p-2">
+                  <AiOutlineMenuFold></AiOutlineMenuFold>
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 ${
+                  theme ? "bg-white text-gray-800" : "bg-gray-800 text-white"
+                }`}
+              >
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/addProducts">Add Product</Link>
+                </li>
+              </ul>
+            </div>
+        </div>
+       </div>
 
         {/* Navbar end part */}
-        <div className="flex-none">
-
-
-            {/* Cart */}
+        <div className="flex gap-1 px-0 w-1/3 justify-end">
+          {/* Cart */}
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator">
@@ -51,10 +78,12 @@ const Navbar = () => {
                 <span className="badge badge-sm indicator-item">8</span>
               </div>
             </label>
-            
+
             <div
               tabIndex={0}
-              className={`mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow ${theme ? "bg-white text-gray-800" : "bg-gray-800 text-white"}`}
+              className={`mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow ${
+                theme ? "bg-white text-gray-800" : "bg-gray-800 text-white"
+              }`}
             >
               <div className="card-body">
                 <span className="font-bold text-lg">8 Items</span>
@@ -68,32 +97,38 @@ const Navbar = () => {
             </div>
           </div>
 
-
-
           {/* Profile */}
-          <div className={`dropdown dropdown-end`}>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 flex p-2">
-                <BsFillPeopleFill className="w-full h-full"/>
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 ${theme ? "bg-white text-gray-800" : "bg-gray-800 text-white"}`}
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                </a>
-              </li>
-              <li>
-                <a onClick={handleThemeNav}>{theme? "Dark mood" : "Light Mood"}</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
+          {user ? (
+            <div className={`dropdown dropdown-end`}>
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 flex p-2">
+                  <BsFillPeopleFill className="w-full h-full" />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 ${
+                  theme ? "bg-white text-gray-800" : "bg-gray-800 text-white"
+                }`}
+              >
+                <li>
+                  <a className="justify-between">Profile</a>
+                </li>
+                <li>
+                  <a onClick={handleThemeNav}>
+                    {theme ? "Dark mood" : "Light Mood"}
+                  </a>
+                </li>
+                <li>
+                  <button onClick={handleLogOut}>Logout</button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <button className="py-2 px-4 rounded-full hover:bg-slate-700 hover:text-white font-medium border-2">
+              <Link to="/login">Login</Link>
+            </button>
+          )}
         </div>
       </div>
     </div>
