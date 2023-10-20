@@ -1,35 +1,23 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const BrandPageSlide = ({product,id}) => {
+const BrandPageSlide = ({ product }) => {
+  const {  productName, imageLink, price } =
+    product;
 
-    const {
-        _id,
-        productName,
-        imageLink,
-        brandName,
-        type,
-        price,
-        ratings
-
-
-    } = product
-
-
-    return (
-        <div>
-            <div id={`item${id + 1}`} className="carousel-item w-full">
-          <img
-            src={imageLink}
-            className="w-full"
-          />
-        </div>
-        </div>
-    );
+  return (
+    <div className="h-[40vw]">
+      <img className="" src={imageLink} />
+      <div className="legend">
+        <h2 className="text-xl">{productName}</h2>
+        <p>Price: ${price}</p>
+      </div>
+    </div>
+  );
 };
 
 export default BrandPageSlide;
 
 BrandPageSlide.propTypes = {
-    product: PropTypes.array,
-    id : PropTypes.number
-}
+  product: PropTypes.array,
+  id: PropTypes.number,
+};

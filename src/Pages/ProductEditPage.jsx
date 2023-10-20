@@ -1,4 +1,4 @@
-import {  useLoaderData, useNavigate } from "react-router-dom";
+import {  Link, useLoaderData, useNavigate } from "react-router-dom";
 import Navbar from "../Componants/Navbar";
 
 const ProductEditPage = () => {
@@ -148,6 +148,7 @@ const ProductEditPage = () => {
     <button className="btn mt-8 bg-blue-600 text-white hover:text-black w-full" type="submit">
       Update Product
     </button>
+      <Link className="btn mt-8 bg-black text-white hover:text-black hover:bg-white w-full" to={`/brands/${brandName}`}>Go Back</Link>
   </form>
 </div>
    </>

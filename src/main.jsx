@@ -15,6 +15,7 @@ import Home from './Pages/Home.jsx';
 import ContactUs from './Pages/ContactUs.jsx';
 import BrandPage from './Pages/BrandPage.jsx';
 import ProductEditPage from './Pages/ProductEditPage.jsx';
+import ProductDetailPage from './Pages/ProductDetailPage.jsx';
 
 
 const router = createBrowserRouter([
@@ -50,7 +51,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/update/:id",
-        element: <ProductEditPage/>,
+        element: <PrivateRoutes><ProductEditPage/></PrivateRoutes>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+      },
+      {
+        path: "/products/:id",
+        element: <PrivateRoutes><ProductDetailPage/></PrivateRoutes>,
         loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
       }
       

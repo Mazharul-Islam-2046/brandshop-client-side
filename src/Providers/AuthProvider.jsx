@@ -18,6 +18,10 @@ const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
+
+
+
+
   const [theme, setTheme] = useState(true);
 
   const handleTheme = () => {

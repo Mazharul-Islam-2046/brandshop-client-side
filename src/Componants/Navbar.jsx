@@ -20,16 +20,16 @@ const Navbar = () => {
       <div className={`navbar md:px-12 ${theme ? "bg-white" : "bg-black"} bg-opacity-50`}>
        <div className="flex w-2/3 justify-around flex-row-reverse md:flex-row md:justify-normal">
          {/* Logo */}
-         <div className="lg:w-2/3">
+         <div className="lg:w-2/4">
           <Link to="/" className="btn btn-ghost normal-case text-xl">MZ Logo</Link>
         </div>
 
         {/* Middle Menu */}
         <div className="md:flex">
           <div className="hidden md:flex space-x-5">
-          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost text-gray-800"} to="/">Home</NavLink>
-          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost text-gray-800"} to="/addProducts">Add Product</NavLink>
-          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost text-gray-800"} to="/contactus">Contact Us</NavLink>
+          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost"} to="/">Home</NavLink>
+          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost"} to="/addProducts">Add Product</NavLink>
+          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost"} to="/contactus">Contact Us</NavLink>
           </div>
 
           {/* Hamburger Menu */}
