@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="navbar md:px-12 bg-base-100">
+      <div className={`navbar md:px-12 ${theme ? "bg-white" : "bg-black"} bg-opacity-50`}>
        <div className="flex w-2/3 justify-around flex-row-reverse md:flex-row md:justify-normal">
          {/* Logo */}
          <div className="lg:w-2/3">
@@ -25,10 +25,11 @@ const Navbar = () => {
         </div>
 
         {/* Middle Menu */}
-        <div className="md:flex w-1/3">
+        <div className="md:flex">
           <div className="hidden md:flex space-x-5">
           <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost text-gray-800"} to="/">Home</NavLink>
           <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost text-gray-800"} to="/addProducts">Add Product</NavLink>
+          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost text-gray-800"} to="/contactus">Contact Us</NavLink>
           </div>
 
           {/* Hamburger Menu */}
