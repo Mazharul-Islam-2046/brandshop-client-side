@@ -11,6 +11,7 @@ import Register from './Pages/Register.jsx';
 import _addProduct from './Pages/_addProduct.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
 import PrivateRoutes from './Providers/PrivateRoutes.jsx';
+import Home from './Pages/Home.jsx';
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <App/>,
     children:[
+      {
+        path: "/",
+        element: <Home></Home>
+      },
       {
         path: "/login",
         element: <Login/>
@@ -29,7 +34,8 @@ const router = createBrowserRouter([
       {
         path: "/addProducts",
         element: <PrivateRoutes><_addProduct/></PrivateRoutes>
-      }
+      },
+      
     ]
   },
 ]);

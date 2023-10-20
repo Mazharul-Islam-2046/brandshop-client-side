@@ -1,9 +1,8 @@
+import Navbar from "../Componants/Navbar";
 
 const _addProduct = () => {
-
-  const handleAddProduct = e => {
-    e.preventDefault()
-
+  const handleAddProduct = (e) => {
+    e.preventDefault();
 
     const form = e.target;
     const brandName = form.brandName.value;
@@ -20,8 +19,8 @@ const _addProduct = () => {
       productName,
       description,
       price,
-      ratings
-    }
+      ratings,
+    };
 
     // posting the product to database
     fetch("http://localhost:5000/products", {
@@ -37,104 +36,106 @@ const _addProduct = () => {
       });
   };
 
+  return (
+   <>
+   <Navbar></Navbar>
 
-
-
-
-    return (
-        <div>
-            <form onSubmit={handleAddProduct}>
-            <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Brand Name</span>
-                  </label>
-                  <input
-                    name="brandName"
-                    type="text"
-                    placeholder="Brand Name"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Type</span>
-                  </label>
-                  <input
-                    name="type"
-                    type="text"
-                    placeholder="SUB, Sedan, HR, EV, Hybrid etc..."
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Image Link</span>
-                  </label>
-                  <input
-                    name="imageLink"
-                    type="text"
-                    placeholder="Image Link"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Product Name</span>
-                  </label>
-                  <input
-                    name="productName"
-                    type="text"
-                    placeholder="Product Name"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Description</span>
-                  </label>
-                  <input
-                    name="description"
-                    type="text"
-                    placeholder="Description"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Price</span>
-                  </label>
-                  <input
-                    name="price"
-                    type="text"
-                    placeholder="$$"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Ratings(0-5)</span>
-                  </label>
-                  <input
-                    name="ratings"
-                    type="number"
-                    min="0"
-                    max="5"
-                    placeholder="Ratings"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <button className="btn" type="submit">Add Product</button>
-
-            </form>
-        </div>
-    );
+<div className="w-[70%] mx-auto text-center mt-16">
+  <h2 className="font-bold text-5xl mb-4">Add Products</h2>
+  <form onSubmit={handleAddProduct} className="space-y-3">
+    <div className="form-control">
+      <label className="label">
+        <span className="label-text">Brand Name</span>
+      </label>
+      <input
+        name="brandName"
+        type="text"
+        placeholder="Brand Name"
+        className="input input-bordered"
+        required
+      />
+    </div>
+    <div className="form-control">
+      <label className="label">
+        <span className="label-text">Type</span>
+      </label>
+      <input
+        name="type"
+        type="text"
+        placeholder="SUB, Sedan, HR, EV, Hybrid etc..."
+        className="input input-bordered"
+        required
+      />
+    </div>
+    <div className="form-control">
+      <label className="label">
+        <span className="label-text">Image Link</span>
+      </label>
+      <input
+        name="imageLink"
+        type="text"
+        placeholder="Image Link"
+        className="input input-bordered"
+        required
+      />
+    </div>
+    <div className="form-control">
+      <label className="label">
+        <span className="label-text">Product Name</span>
+      </label>
+      <input
+        name="productName"
+        type="text"
+        placeholder="Product Name"
+        className="input input-bordered"
+        required
+      />
+    </div>
+    <div className="form-control">
+      <label className="label">
+        <span className="label-text">Description</span>
+      </label>
+      <input
+        name="description"
+        type="text"
+        placeholder="Description"
+        className="input input-bordered"
+        required
+      />
+    </div>
+    <div className="form-control">
+      <label className="label">
+        <span className="label-text">Price</span>
+      </label>
+      <input
+        name="price"
+        type="text"
+        placeholder="$$"
+        className="input input-bordered"
+        required
+      />
+    </div>
+    <div className="form-control">
+      <label className="label">
+        <span className="label-text">Ratings(0-5)</span>
+      </label>
+      <input
+        name="ratings"
+        type="number"
+        min="0"
+        max="5"
+        placeholder="Ratings"
+        className="input input-bordered"
+        required
+      />
+    </div>
+    <button className="btn mt-8 bg-blue-600 text-white hover:text-black w-full" type="submit">
+      Add Product
+    </button>
+  </form>
+</div>
+   </>
+  );
 };
 
 export default _addProduct;
