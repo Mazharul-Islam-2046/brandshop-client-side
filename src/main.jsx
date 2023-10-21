@@ -12,21 +12,24 @@ import _addProduct from './Pages/_addProduct.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
 import PrivateRoutes from './Providers/PrivateRoutes.jsx';
 import Home from './Pages/Home.jsx';
-import ContactUs from './Pages/ContactUs.jsx';
 import BrandPage from './Pages/BrandPage.jsx';
 import ProductEditPage from './Pages/ProductEditPage.jsx';
 import ProductDetailPage from './Pages/ProductDetailPage.jsx';
+import MyCart from './Pages/MyCart.jsx';
+import Error from './Pages/Error.jsx';
+import AboutUs from './Pages/AboutUs.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+    errorElement:<Error/>,
     children:[
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/brands')
+        loader: () => fetch('https://brandshop-assignment-server-49xw7lijw.vercel.app/brands')
       },
       {
         path: "/login",
@@ -41,23 +44,27 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><_addProduct/></PrivateRoutes>
       },
       {
-        path: "/contactus",
-        element: <ContactUs/>
+        path: "/aboutus",
+        element: <AboutUs/>
       },
       {
         path: "/brands/:brandName",
         element: <BrandPage/>,
-        loader: () => fetch('http://localhost:5000/products')
+        loader: () => fetch('https://brandshop-assignment-server-49xw7lijw.vercel.app/products')
       },
       {
         path: "/products/update/:id",
         element: <PrivateRoutes><ProductEditPage/></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({params}) => fetch(`https://brandshop-assignment-server-49xw7lijw.vercel.app/products/${params.id}`)
       },
       {
         path: "/products/:id",
         element: <PrivateRoutes><ProductDetailPage/></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({params}) => fetch(`https://brandshop-assignment-server-49xw7lijw.vercel.app/products/${params.id}`)
+      },
+      {
+        path: "/mycart",
+        element: <PrivateRoutes><MyCart/></PrivateRoutes>,
       }
       
     ]

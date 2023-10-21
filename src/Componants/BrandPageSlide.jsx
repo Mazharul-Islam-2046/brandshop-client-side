@@ -18,6 +18,5 @@ const BrandPageSlide = ({ product }) => {
 export default BrandPageSlide;
 
 BrandPageSlide.propTypes = {
-  product: PropTypes.array,
-  id: PropTypes.number,
+  product: PropTypes.object,
 };

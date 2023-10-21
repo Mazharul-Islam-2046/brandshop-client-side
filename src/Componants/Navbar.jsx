@@ -3,9 +3,17 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineMenuFold } from "react-icons/ai";
+import Swal from 'sweetalert2'
 
 const Navbar = () => {
-  const { handleTheme, user, logOut, theme } = useContext(AuthContext);
+  const { handleTheme, user, logOut, theme, cart, photo } = useContext(AuthContext);
+
+
+  const length = cart?.length
+  
+
+
+
 
   const handleThemeNav = () => {
     handleTheme();
@@ -13,6 +21,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut();
+    Swal.fire('Successfully Loged Out')
   };
 
   return (
@@ -29,7 +38,7 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-5">
           <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost"} to="/">Home</NavLink>
           <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost"} to="/addProducts">Add Product</NavLink>
-          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost"} to="/contactus">Contact Us</NavLink>
+          <NavLink className={({isActive}) => isActive? "btn btn-ghost bg-black text-white" : "btn btn-ghost"} to="/aboutus">About Us</NavLink>
           </div>
 
           {/* Hamburger Menu */}
@@ -76,7 +85,7 @@ const Navbar = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">8</span>
+                <span className="badge badge-sm indicator-item">{length}</span>
               </div>
             </label>
 
@@ -87,12 +96,11 @@ const Navbar = () => {
               }`}
             >
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="font-bold text-lg">{length} Items</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <Link to="/mycart" className="btn btn-primary btn-block">
                     View cart
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -103,7 +111,9 @@ const Navbar = () => {
             <div className={`dropdown dropdown-end`}>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 flex p-2">
-                  <BsFillPeopleFill className="w-full h-full" />
+                  {
+                    photo ? <img src={photo} alt="" className="w-full h-full object-cover" /> : <BsFillPeopleFill className="w-full h-full" />
+                  }
                 </div>
               </label>
               <ul
@@ -112,9 +122,6 @@ const Navbar = () => {
                   theme ? "bg-white text-gray-800" : "bg-gray-800 text-white"
                 }`}
               >
-                <li>
-                  <a className="justify-between">Profile</a>
-                </li>
                 <li>
                   <a onClick={handleThemeNav}>
                     {theme ? "Dark mood" : "Light Mood"}

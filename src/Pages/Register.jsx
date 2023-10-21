@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, theme } = useContext(AuthContext);
@@ -15,27 +16,55 @@ const Register = () => {
       password,
     };
 
+    if (password.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Write password more then 6 charecters",
+      });
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Write at least a Capital letter"
+      });
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Write atleast 1 smaller letter",
+      });
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
 
-
-
         // posting the users to database
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        })
+        fetch(
+          "https://brandshop-assignment-server-49xw7lijw.vercel.app/users",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            data && Swal.fire("Registered Successfully");
           });
       })
       .catch((error) => {
-        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.code,
+        });
       });
   };
 

@@ -14,8 +14,6 @@ const BrandCard = ({ brand }) => {
         setHover(false)
     }
 
-
-  console.log(brand);
   const { brandName, brandImg } = brand;
   return (
       <Link to={`/brands/${brandName}`}>

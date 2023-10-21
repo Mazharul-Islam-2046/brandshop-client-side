@@ -20,6 +20,43 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
 
+  // Navbar profile image 
+  const [photo, setPhoto] = useState(null)
+
+
+
+
+
+  // handle cart
+
+  const [cart, setCart] = useState([]);
+  const [ovserver, setOvserver] = useState(true);
+
+
+  useEffect(() => {
+    fetch("https://brandshop-assignment-server-49xw7lijw.vercel.app/mycarts")
+        .then((res) => res.json())
+        .then((data) => {
+          setCart(data);
+        });
+  },[ovserver])
+
+
+
+
+
+
+const [deleteOvserver, setDeleteOvserver] = useState(true)
+  // handle mycart page
+  useEffect(() => {
+    fetch("https://brandshop-assignment-server-49xw7lijw.vercel.app/mycarts")
+        .then((res) => res.json())
+        .then((data) => {
+          setCart(data);
+        });
+  },[deleteOvserver])
+
+
 
 
   const [theme, setTheme] = useState(true);
@@ -65,6 +102,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const authInfo = {
+    setCart,
     handleTheme,
     theme,
     user,
@@ -73,6 +111,13 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     googleSignIn,
+    cart,
+    setOvserver,
+    ovserver,
+    setDeleteOvserver,
+    deleteOvserver,
+    setPhoto,
+    photo
   };
 
   return (

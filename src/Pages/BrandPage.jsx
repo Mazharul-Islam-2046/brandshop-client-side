@@ -7,9 +7,7 @@ import BrandPageHeader from "../Componants/BrandPageHeader";
 const BrandPage = () => {
 
     const {brandName} = useParams()
-    console.log(brandName);
     const allBrandProducts = useLoaderData();
-    console.log(allBrandProducts);
     const brandProducts = allBrandProducts.filter((brandProduct) => 
         brandProduct.brandName === brandName
     )

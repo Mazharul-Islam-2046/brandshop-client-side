@@ -36,5 +36,5 @@ const BrandPageCard = ({product}) => {
 export default BrandPageCard;
 
 BrandPageCard.propTypes = {
-    product: PropTypes.array
+    product: PropTypes.object
 }

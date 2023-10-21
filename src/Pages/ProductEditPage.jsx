@@ -33,7 +33,7 @@ const ProductEditPage = () => {
     };
 
     // posting the product to database
-    fetch(`http://localhost:5000/products/${product._id}`, {
+    fetch(`https://brandshop-assignment-server-49xw7lijw.vercel.app/products/${product._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

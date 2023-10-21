@@ -2,16 +2,31 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import Swal from 'sweetalert2'
 
 function Login() {
 
   const location = useLocation();
   const navigate = useNavigate()
 
-  const {theme,signIn, googleSignIn} = useContext(AuthContext)
+  
+
+  const {theme,signIn, googleSignIn, setPhoto} = useContext(AuthContext)
 
   const handleGooglesignIng = () => {
     googleSignIn()
+    .then(result => {
+      setPhoto(result.user.photoURL);
+      result && Swal.fire('Successfully Loged In')
+      navigate(location?.state ? location.state : '/')
+    })
+    .catch(error => {
+      error && Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.code,
+      })
+    })
   }
 
 
@@ -21,13 +36,19 @@ function Login() {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
     signIn(email, password)
     .then (result => {
+      setPhoto(result.user.photoURL);
+      Swal.fire('Successfully Loged In')
       result && navigate(location?.state ? location.state : '/');
     })
     .catch(error => {
-      console.error(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error?.code,
+      })
+      console.log(error?.code);
     })
   }
 

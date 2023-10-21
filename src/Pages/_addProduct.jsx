@@ -1,6 +1,10 @@
+import Swal from "sweetalert2";
 import Navbar from "../Componants/Navbar";
 
 const _addProduct = () => {
+
+
+
   const handleAddProduct = (e) => {
     e.preventDefault();
 
@@ -23,7 +27,7 @@ const _addProduct = () => {
     };
 
     // posting the product to database
-    fetch("http://localhost:5000/products", {
+    fetch("https://brandshop-assignment-server-49xw7lijw.vercel.app/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +36,7 @@ const _addProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        data && Swal.fire('Product Added Successfully')
       });
   };
 
