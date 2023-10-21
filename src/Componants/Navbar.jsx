@@ -30,7 +30,7 @@ const Navbar = () => {
        <div className="flex w-2/3 justify-around flex-row-reverse md:flex-row md:justify-normal">
          {/* Logo */}
          <div className="lg:w-2/4">
-          <Link to="/" className="btn btn-ghost normal-case text-xl">MZ Logo</Link>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">MZ CarShop</Link>
         </div>
 
         {/* Middle Menu */}
@@ -85,7 +85,7 @@ const Navbar = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">{length}</span>
+                <span className="badge badge-sm indicator-item">{user ? length : 0}</span>
               </div>
             </label>
 
@@ -96,7 +96,7 @@ const Navbar = () => {
               }`}
             >
               <div className="card-body">
-                <span className="font-bold text-lg">{length} Items</span>
+                {user ? <span className="font-bold text-lg">{length} Items</span> : <span className="font-bold text-lg">0 Items</span>}
                 <div className="card-actions">
                   <Link to="/mycart" className="btn btn-primary btn-block">
                     View cart

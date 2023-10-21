@@ -36,6 +36,34 @@ function Login() {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
+
+    if (password.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Write password more then 6 charecters",
+      });
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Write at least a Capital letter"
+      });
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Write atleast 1 smaller letter",
+      });
+      return;
+    }
+
+
+
+
     signIn(email, password)
     .then (result => {
       setPhoto(result.user.photoURL);

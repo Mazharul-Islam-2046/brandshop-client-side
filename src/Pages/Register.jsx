@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, theme } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate()
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -57,6 +59,8 @@ const Register = () => {
           .then((res) => res.json())
           .then((data) => {
             data && Swal.fire("Registered Successfully");
+            navigate(location?.state ? location.state : '/');
+
           });
       })
       .catch((error) => {
