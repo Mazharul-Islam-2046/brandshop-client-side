@@ -26,7 +26,7 @@ const BrandCard = ({ brand }) => {
           />
         </figure>
         <div className={`card-body z-20 w-full h-full justify-center items-center ${theme ? "bg-slate-300 bg-opacity-0 md:bg-opacity-40" : "bg-gray-600 bg-opacity-0 md:bg-opacity-40"} ${hover ? "flex" : "md:hidden"}`}>
-          <h2 className="font-medium text-5xl text-white">{brandName}</h2>
+          <h2 className="font-medium text-2xl lg:text-5xl text-white">{brandName}</h2>
         </div>
       </div>
       </Link>

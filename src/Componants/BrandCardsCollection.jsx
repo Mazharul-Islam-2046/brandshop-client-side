@@ -9,7 +9,7 @@ const BrandCardsCollection = ({brandData}) => {
 
     return (
         <div className={`pt-20 pb-20 ${theme ? "bg-slate-300" : "bg-gray-600"}`}>
-            <h2 className='text-5xl font-bold mb-12 text-center'>Our Brands</h2>
+            <h2 className='text-3xl lg:text-5xl font-bold mb-12 text-center'>Our Brands</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-6 w-4/5'>
             {
                 brandData.map((brand, idx) => 

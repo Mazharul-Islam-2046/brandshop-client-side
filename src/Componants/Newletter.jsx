@@ -6,9 +6,9 @@ import { AuthContext } from '../Providers/AuthProvider';
 const Newletter = () => {
     const {theme} = useContext(AuthContext)
     return (
-        <div className='py-60 bg-[url("https://i.pinimg.com/736x/c4/14/7e/c4147ed539f72b923d98c3e0fb3c1deb.jpg")] bg-cover bg-opacity-30'>
-            <div className={`card w-3/5 py-24 px-20 mx-auto  ${theme ? "bg-slate-200" : "bg-black"}`}>
-                <h3 className='text-center text-3xl mb-10'>Subscribe To Our Newsletter</h3>
+        <div className='py-40 px-4 lg:py-60 bg-[url("https://i.pinimg.com/736x/c4/14/7e/c4147ed539f72b923d98c3e0fb3c1deb.jpg")] bg-cover bg-opacity-30'>
+            <div className={`card lg:w-3/5 py-16 lg:py-24 px-20 mx-auto  ${theme ? "bg-slate-200" : "bg-black"}`}>
+                <h3 className='text-center text-xl lg:text-3xl mb-7lg:mb-10'>Subscribe To Our Newsletter</h3>
                 <label htmlFor="">Name</label>
                 <input className=' py-2 input mb-5 mt-2' type="text" name="name" id="" placeholder='Name' />
                 <label htmlFor="">Email</label>

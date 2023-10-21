@@ -35,7 +35,7 @@ const MyCartCardCollection = () => {
             }
         </div> : 
         <div className="h-[80vh] flex justify-center items-center">
-            <h1 className="text-4xl font-extrabold">Your Cart is Empty</h1>
+            <h1 className=" text-2xl lg:text-4xl font-extrabold">Your Cart is Empty</h1>
         </div>
             }
         </div>

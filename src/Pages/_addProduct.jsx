@@ -45,8 +45,8 @@ const _addProduct = () => {
    <Navbar></Navbar>
 
 <div className="w-[70%] mx-auto text-center mt-16 pb-14">
-  <h2 className="font-bold text-5xl mb-4">Add Products</h2>
-  <form onSubmit={handleAddProduct} className="space-y-3">
+  <h2 className="font-bold text-3xl lg:text-5xl mb-4">Add Products</h2>
+  <form onSubmit={handleAddProduct} className="space-y-1 lg:space-y-3">
     <div className="form-control">
       <label className="label">
         <span className="label-text">Brand Name</span>

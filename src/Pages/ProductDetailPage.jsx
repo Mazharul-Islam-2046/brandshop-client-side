@@ -69,7 +69,7 @@ const ProductDetailPage = () => {
   return (
     <>
       <Navbar />
-      <div className="flex gap-4 py-24">
+      <div className="flex flex-col lg:flex-row gap-4 py-24">
         <div className="flex-1 p-6">
           <img src={imageLink} alt="" />
           <div className="flex gap-6 mt-4">
