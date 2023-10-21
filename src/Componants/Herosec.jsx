@@ -16,7 +16,7 @@ const Herosec = () => {
                     </h1>
                     <p className="text-base md:text-xl font-semibold text-white text-center lg:leading-7 mt-3 w-4/5 mx-auto lg:w-full lg:mt-10 mb-8">Find Your Dream Ride at Mz Cars Shop. Discover a wide range of cars to suit <br /> your style and needs. Your perfect car is just a click away!</p>
 
-                    <NavLink className="text-purple-200 text-sm lg:text-lg hover:text-white hover:bg-purple-950 cursor-pointer bg-purple-900 py-3 px-6" to="/contact-us">About Us</NavLink>
+                    <NavLink className="text-purple-200 text-sm lg:text-lg hover:text-white hover:bg-purple-950 cursor-pointer bg-purple-900 py-3 px-6" to="/aboutus">About Us</NavLink>
 
               </div>
         </div>
