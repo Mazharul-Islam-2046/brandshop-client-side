@@ -86,11 +86,11 @@ function Login() {
 
   return (
     <>
-      <div className="min-h-screen bg-base-200">
+      <div className="min-h-screen bg-base-200 mx-auto">
         <div className=" flex-col lg:flex justify-center items-center space-y-10 mt-10">
-          <h1 className="text-3xl">Login</h1>
+          <h1 className="text-3xl text-center">Login</h1>
           
-            <div className={`card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ${theme ? "bg-gray-800 text-white" : "bg-yellow-50 text-gray-500"}`}>
+            <div className={`card mx-auto flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ${theme ? "bg-gray-800 text-white" : "bg-yellow-50 text-gray-500"}`}>
               <form onSubmit={handleLogin} className="card-body">
                 <div className="form-control">
                   <label className="label">
